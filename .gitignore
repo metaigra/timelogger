@@ -26,5 +26,6 @@ obj
 .vscode
 *.idea
 *.user
+*.tmp
 
 tailwind.generated.css

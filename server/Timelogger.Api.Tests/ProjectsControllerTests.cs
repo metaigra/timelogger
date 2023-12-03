@@ -16,4 +16,4 @@ namespace Timelogger.Api.Tests
             Assert.AreEqual("Hello Back!", actual);
         }
     }
-} 
+}

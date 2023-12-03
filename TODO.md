@@ -8,7 +8,7 @@
 - Use Cases
     - list of projects
         - view
-            -  .NET Core v3.1 and Node  
+            +  .NET Core v3.1 and Node  
             - EF in memory
             - build script
             - run script
@@ -52,4 +52,12 @@
 
 
 Log:
-- req.analysis 
++ req.analysis 30m
++ ERR notsup Unsupported platform for fsevents@2.3.3 - 5m
++ environment - 30m
++ ERR: .Net Core 3.1 dependencies - 15m
++ ERR: no unit tests
+- project list
+- env: 
+
+
