@@ -16,7 +16,6 @@ namespace Timelogger.Api.Tests
     public class ProjectsControllerTests
     {
         private ProjectsController _contoller;
-        private ApiContext _db;
 
         [SetUp]
         public void SetUp() {
@@ -25,26 +24,21 @@ namespace Timelogger.Api.Tests
             .UseInMemoryDatabase(databaseName: "InMemory_" + Guid.NewGuid())
             .Options;
 
-            _db = new ApiContext(options);
+            var db = new ApiContext(options);
             var mapperConfiguration = new MapperConfiguration(cfg =>
                 cfg.AddProfile<MappingProfile>()
             );
             
             var mapper = mapperConfiguration.CreateMapper();
 
-            var projectRepository = new ProjectRepository(_db);
+            var projectRepository = new ProjectRepository(db);
 
-            _contoller = new ProjectsController(_db, 
+            _contoller = new ProjectsController(db, 
                 mapper, 
                 new CreateProjectCase(projectRepository),
                 new GetProjectsCase(projectRepository));
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            _db.Dispose(); 
-        }
 
         [Test]
         public void Controller_AddProject_GetProject()
@@ -60,15 +54,13 @@ namespace Timelogger.Api.Tests
         }
 
         [Test]
-        public void Controller_AddProjects_CheckCount()
+        public void Controller_AddProjects_AssertCount()
         {
             int id1 = 1, id2 = 2;
-            var projects = (_contoller.Get() as OkObjectResult).Value as IList<ProjectDto>;
-
+            
             _contoller.Create(new ProjectDto() { Id = id1, Name = "Project 1" });
-            projects = (_contoller.Get() as OkObjectResult).Value as IList<ProjectDto>;
             _contoller.Create(new ProjectDto() { Id = id2, Name = "Project 2" });
-            projects = (_contoller.Get() as OkObjectResult).Value as IList<ProjectDto>;
+            var projects = (_contoller.Get() as OkObjectResult).Value as IList<ProjectDto>;
 
             Assert.AreEqual(2, projects.Count);
             Assert.AreEqual(id1, projects[0].Id);
