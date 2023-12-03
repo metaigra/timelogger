@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Timelogger.Api.DTO;
 using Timelogger.Entities;
-using Timelogger.UseCases;
+using Timelogger.UseCases.Project;
 
 namespace Timelogger.Api.Controllers
 {
@@ -34,6 +34,7 @@ namespace Timelogger.Api.Controllers
             return Ok(projectDtos);
 		}
 
+        [HttpPost]
         public IActionResult Create([FromBody] ProjectDto projectDto)
         {
 			var project = _mapper.Map<Project>(projectDto);
@@ -41,5 +42,12 @@ namespace Timelogger.Api.Controllers
             return Ok(newProject);
         }
 
+        [HttpPatch]
+        public IActionResult Update([FromBody] ProjectStateDto projectStateDto)
+        {
+            var projects = _getProjectsCase.Exec();
+            var projectDtos = _mapper.Map<List<ProjectDto>>(projects);
+            return Ok(projectDtos);
+        }
     }
 }

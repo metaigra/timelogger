@@ -27,5 +27,29 @@ namespace Timelogger.Repositories
             return _context.Projects.ToList();
         }
 
+        public Project? Get(int prjectId)
+        {
+            return _context.Projects.FirstOrDefault(p => p.Id == prjectId);
+        }
+
+        internal void Update(Project project)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void StartInterval(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void StopInterval(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void RemoveShortIntervals(Project project)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

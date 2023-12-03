@@ -10,21 +10,25 @@
         - view
             +  .NET Core v3.1 and Node  
             + EF in memory
-            - build script
+            + build script
             - run script
-            - cli
-                - fetch faked projects from server
-                - show project
-                - TODO: queryProvider (App.tsx)
-            - srv
-                - add faked data
-                - test controller
-            - remove search
-            - ui kit
+            + cli
+                + fetch faked projects from server
+                + show project
+            + srv
+                + add faked data
+                + test controller
+            + remove search
         - start
-        - finish
+            + ui kit
+            - fake data
+            - srv validation
+            - datetime
+        - stop
+        - completed
         - min: 30m
         - open porject's overview
+            - rounter
         - add the new one
         - add deadline
         - delete 
@@ -36,6 +40,9 @@
         - return back to list of the projects
         - completed
         - disable start/finish for completed
+    - refactoring
+        - TODO: queryProvider (App.tsx)
+        - Project Get(int prjectId) - add exception handlers
 
 - DoD
     - Works, obviously
@@ -52,6 +59,7 @@
     - no styling
     - auth
     - db
+    - handle responses
 
 - Finalize
     - remove dependences
@@ -67,12 +75,14 @@ Log:
 + 15m - ERR: .Net Core 3.1 dependencies
 + 10m - ERR: no unit tests
 + 60m - API: add project
-1.5h
+90m
+
 + 10m - API: 2 new projects
 + 15m - CLI: folder structure
 +  5m - ERR: ERROR in useBaseQuery.js 27:2-28
-  15m - ERR: Uncaught TypeError: dispatcher.useSyncExternalStore is not a function
-
++ 45m - ERR: Uncaught TypeError: dispatcher.useSyncExternalStore is not a function + other issues
+165m
+       Add feature
 
 - project list
 - env: 

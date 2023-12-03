@@ -6,13 +6,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Timelogger.Entities;
-using Timelogger.UseCases;
 using Timelogger.Repositories;
 using Microsoft.OpenApi.Models;
+using Timelogger.UseCases.Project;
+using Timelogger.UseCases;
+using Timelogger.UseCases.ProjectState;
 
 namespace Timelogger.Api
 {
-	public class Startup
+    public class Startup
 	{
 		private readonly IWebHostEnvironment _environment;
 		public IConfigurationRoot Configuration { get; }
@@ -46,10 +48,19 @@ namespace Timelogger.Api
             services.AddScoped<ProjectRepository>();
             services.AddScoped<CreateProjectCase>();
             services.AddScoped<GetProjectsCase>();
+            services.AddScoped<CompletedProjectCase>();
+            services.AddScoped<StartProjectCase>();
+            services.AddScoped<StopProjectCase>();
 
+            services.AddSwaggerGen();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Timelogger.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Implement Swagger UI",
+                    Description = "A simple example to Implement Swagger UI",
+                });
             });
 
             if (_environment.IsDevelopment())
@@ -71,8 +82,12 @@ namespace Timelogger.Api
 
 			app.UseMvc();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
+            });
 
-			var serviceScopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+            var serviceScopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 			using (var scope = serviceScopeFactory.CreateScope())
 			{
 				SeedDatabase(scope);

@@ -5,7 +5,7 @@ using System.Text;
 using Timelogger.Entities;
 using Timelogger.Repositories;
 
-namespace Timelogger.UseCases
+namespace Timelogger.UseCases.Project
 {
     public class GetProjectsCase
     {
@@ -16,7 +16,7 @@ namespace Timelogger.UseCases
             _repository = repository;
         }
 
-        public IList<Project> Exec()
+        public IList<Timelogger.Entities.Project> Exec()
         {
             return _repository.GetAll().ToList();
         }

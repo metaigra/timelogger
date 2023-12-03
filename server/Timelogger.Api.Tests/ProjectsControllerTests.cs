@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System;
+using Timelogger.UseCases.Project;
+using Timelogger.UseCases.ProjectState.Const;
 
 namespace Timelogger.Api.Tests
 {
@@ -51,6 +53,7 @@ namespace Timelogger.Api.Tests
             Assert.AreEqual(1, projects.Count);
             Assert.AreEqual(projectDto.Id, projects[0].Id);
             Assert.AreEqual(projectDto.Name, projects[0].Name);
+            Assert.AreEqual(States.STOP, projects[0].State);
         }
 
         [Test]
@@ -69,5 +72,27 @@ namespace Timelogger.Api.Tests
             Assert.AreEqual(projects[0].Id, actual[0].Id);
             Assert.AreEqual(projects[1].Id, actual[1].Id);
         }
+
+        [Test]
+        public void Controller_StartProject()
+        {
+            var projectDto = new ProjectDto { Id = 1, Name = "Project 1" };
+
+            _contoller.Create(projectDto);
+            var projects = (_contoller.Get() as OkObjectResult).Value as IList<ProjectDto>;
+
+            _contoller.Update(new ProjectStateDto { Id = 1, State = States.START });
+            var actual = (_contoller.Get() as OkObjectResult).Value as IList<ProjectDto>;
+
+            Assert.AreEqual(projectDto.Id, projects[0].Id);
+            Assert.AreEqual(projectDto.Name, projects[0].Name);
+            Assert.AreEqual(States.START, projects[0].State);
+        }
+
+        // TODO: интервал больше 30 мин
+        // TODO: 30 min interval (remove small intervals)
+        // TODO: check intervals
+        // TODO: start - stop all others
+        // TODO: dont touch completed
     }
 }
