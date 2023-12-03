@@ -1,6 +1,6 @@
 import React from 'react';
 import { AddProject } from '../../features/projects/AddProject';
-import Projects from '../../features/projects/Projects';
+import ProjectsList from '../../features/projects/ProjectList';
 
 export const Main = () => {
 	return (
@@ -8,7 +8,7 @@ export const Main = () => {
 			<main>
 				<div className='container mx-auto'>
 					<AddProject />
-					<Projects />
+					<ProjectsList />
 				</div>
 			</main>
 		</>

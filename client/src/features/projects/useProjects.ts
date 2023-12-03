@@ -4,6 +4,7 @@ import APIClient from '../../app/api/apiClient';
 export interface Project {
 	id: number;
 	name: string;
+	deadline: string;
 }
 
 const useProjects = () => {
