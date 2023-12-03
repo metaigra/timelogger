@@ -15,6 +15,7 @@
             - cli
                 - fetch faked projects from server
                 - show project
+                - TODO: queryProvider (App.tsx)
             - srv
                 - add faked data
                 - test controller
@@ -68,6 +69,10 @@ Log:
 + 60m - API: add project
 1.5h
 + 10m - API: 2 new projects
++ 15m - CLI: folder structure
++  5m - ERR: ERROR in useBaseQuery.js 27:2-28
+  15m - ERR: Uncaught TypeError: dispatcher.useSyncExternalStore is not a function
+
 
 - project list
 - env: 

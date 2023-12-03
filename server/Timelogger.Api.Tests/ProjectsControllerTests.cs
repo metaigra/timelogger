@@ -56,15 +56,18 @@ namespace Timelogger.Api.Tests
         [Test]
         public void Controller_AddProjects_AssertCount()
         {
-            int id1 = 1, id2 = 2;
-            
-            _contoller.Create(new ProjectDto() { Id = id1, Name = "Project 1" });
-            _contoller.Create(new ProjectDto() { Id = id2, Name = "Project 2" });
-            var projects = (_contoller.Get() as OkObjectResult).Value as IList<ProjectDto>;
+            var projects = new List<ProjectDto> {
+                new ProjectDto() { Id = 1, Name = "Project 1" },
+                new ProjectDto() { Id = 2, Name = "Project 2" }
+            };
 
-            Assert.AreEqual(2, projects.Count);
-            Assert.AreEqual(id1, projects[0].Id);
-            Assert.AreEqual(id2, projects[1].Id);
+            _contoller.Create(projects[0]);
+            _contoller.Create(projects[1]);
+            var actual = (_contoller.Get() as OkObjectResult).Value as IList<ProjectDto>;
+
+            Assert.AreEqual(2, actual.Count);
+            Assert.AreEqual(projects[0].Id, actual[0].Id);
+            Assert.AreEqual(projects[1].Id, actual[1].Id);
         }
     }
 }
