@@ -66,6 +66,9 @@ Log:
 + 15m - ERR: .Net Core 3.1 dependencies
 + 10m - ERR: no unit tests
 + 60m - API: add project
+1.5h
++ 10m - API: 2 new projects
+
 - project list
 - env: 
 
