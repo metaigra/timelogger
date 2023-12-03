@@ -96,16 +96,16 @@ namespace Timelogger.Api
 
 		private static void SeedDatabase(IServiceScope scope)
 		{
-			var context = scope.ServiceProvider.GetService<ApiContext>();
-			var testProject1 = new Project
-			{
-				Id = 1,
-				Name = "e-conomic Interview"
-			};
+			//var context = scope.ServiceProvider.GetService<ApiContext>();
+			//var testProject1 = new Project
+			//{
+			//	Id = 1,
+			//	Name = "e-conomic Interview"
+			//};
 
-			context.Projects.Add(testProject1);
+			//context.Projects.Add(testProject1);
 
-			context.SaveChanges();
+			//context.SaveChanges();
 		}
 	}
 }
