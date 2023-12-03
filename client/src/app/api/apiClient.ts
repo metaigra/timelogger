@@ -16,6 +16,18 @@ const axiosInstance = axios.create({
         .get<T[]>(this.endpoint)
         .then((res) => res.data);
     }
+
+    post = (data: T) => {
+      return axiosInstance
+        .post<T>(this.endpoint, data)
+        .then(res => res.data);
+    }
+
+    update = (data: T) => {
+      return axiosInstance
+        .patch<T>(this.endpoint, data)
+        .then(res => res.data);
+    }
   }
   
   export default APIClient;

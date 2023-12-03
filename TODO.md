@@ -87,8 +87,9 @@ Log:
 165m
 
 + 60m - Start/stop: init structure
-
-       Add feature
++ 60m -           : server intervals
++ 60m -           : update state
+345m
 
 - project list
 - env: 

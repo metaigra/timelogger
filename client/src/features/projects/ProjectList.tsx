@@ -1,9 +1,11 @@
 import React from 'react';
 import useProjects from './useProjects';
 import { UiButton } from '../../app/ui/UiButton';
+import { COMPLETED, START, STOP, toggleProjectState } from './toggleProjectState';
 
 export default function ProjectsList() {
 	const { projects, error } = useProjects();
+	const toggle = toggleProjectState();
 
 	return (
 		<>
@@ -19,7 +21,9 @@ export default function ProjectsList() {
 				<tbody>
 					{projects &&
 						projects.map((project) => (
-							<tr key={project.id} className="hover:bg-gray-100 cursor-pointer">
+							<tr
+								key={project.id}
+								className='hover:bg-gray-100 cursor-pointer'>
 								<td className='border px-4 py-2 w-12'>
 									{project.id}
 								</td>
@@ -27,7 +31,19 @@ export default function ProjectsList() {
 									{project.name}
 								</td>
 								<td className='border px-4 py-2 text-center'>
-									<UiButton>START</UiButton>
+									{project.state != COMPLETED && (
+										<UiButton
+											onClick={() =>
+												toggle.mutate({
+													Id: project.id,
+													State: project.state == START ? STOP : START
+												})
+											}>
+											{project.state == START
+												? 'STOP'
+												: 'START'}
+										</UiButton>
+									)}
 								</td>
 								<td className='border px-4 py-2'>
 									{project.deadline}
