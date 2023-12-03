@@ -7,7 +7,7 @@ using Timelogger.UseCases;
 
 namespace Timelogger.Api.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	public class ProjectsController : Controller
 	{
 		private readonly ApiContext _context;

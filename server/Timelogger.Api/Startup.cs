@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Timelogger.Entities;
 using Timelogger.UseCases;
+using Timelogger.Repositories;
+using Microsoft.OpenApi.Models;
 
 namespace Timelogger.Api
 {
@@ -41,11 +43,18 @@ namespace Timelogger.Api
 
 			services.AddMvc(options => options.EnableEndpointRouting = false);
 
-            services.AddSingleton<CreateProjectCase>();
+            services.AddScoped<ProjectRepository>();
+            services.AddScoped<CreateProjectCase>();
+            services.AddScoped<GetProjectsCase>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Timelogger.API", Version = "v1" });
+            });
 
             if (_environment.IsDevelopment())
 			{
-				services.AddCors();
+                services.AddCors();
 			}
 		}
 
