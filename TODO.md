@@ -9,9 +9,17 @@
     - list of projects
         - view
             +  .NET Core v3.1 and Node  
-            - EF in memory
+            + EF in memory
             - build script
             - run script
+            - cli
+                - fetch faked projects from server
+                - show project
+            - srv
+                - add faked data
+                - test controller
+            - remove search
+            - ui kit
         - start
         - finish
         - min: 30m
@@ -52,11 +60,12 @@
 
 
 Log:
-+ req.analysis 30m
-+ ERR notsup Unsupported platform for fsevents@2.3.3 - 5m
-+ environment - 30m
-+ ERR: .Net Core 3.1 dependencies - 15m
-+ ERR: no unit tests
++ 30m - req.analysis
++  5m - ERR notsup Unsupported platform for fsevents@2.3.3
++ 30m - environment 
++ 15m - ERR: .Net Core 3.1 dependencies
++ 10m - ERR: no unit tests
++ 60m - API: add project
 - project list
 - env: 
 

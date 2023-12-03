@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Timelogger.Entities;
+using Timelogger.UseCases;
 
 namespace Timelogger.Api
 {
@@ -26,10 +27,11 @@ namespace Timelogger.Api
 			Configuration = builder.Build();
 		}
 
-		// This method gets called by the runtime. Use this method to add services to the container.
+		
 		public void ConfigureServices(IServiceCollection services)
 		{
-			// Add framework services.
+            services.AddAutoMapper(typeof(Startup));
+            
 			services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("e-conomic interview"));
 			services.AddLogging(builder =>
 			{
@@ -39,7 +41,9 @@ namespace Timelogger.Api
 
 			services.AddMvc(options => options.EnableEndpointRouting = false);
 
-			if (_environment.IsDevelopment())
+            services.AddSingleton<CreateProjectCase>();
+
+            if (_environment.IsDevelopment())
 			{
 				services.AddCors();
 			}
