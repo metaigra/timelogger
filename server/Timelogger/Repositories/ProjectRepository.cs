@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,32 +25,23 @@ namespace Timelogger.Repositories
         
         public IList<Project> GetAll()
         {
-            return _context.Projects.ToList();
+            return _context
+                .Projects
+                .Include(p => p.Intervals)
+                .ToList();
         }
 
         public Project? Get(int prjectId)
         {
-            return _context.Projects.FirstOrDefault(p => p.Id == prjectId);
+            return _context.Projects
+                .Include(p => p.Intervals)
+                .FirstOrDefault(p => p.Id == prjectId);
         }
 
         internal void Update(Project project)
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        internal void StartInterval(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void StopInterval(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void RemoveShortIntervals(Project project)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

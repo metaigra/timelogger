@@ -31,8 +31,8 @@ namespace Timelogger.UseCases.ProjectState
                 return;
 
             project.State = States.START;
+            project.Intervals.Add(new Entities.Interval() { ProjectId = projectId, Started = DateTime.Now });
             _repository.Update(project);
-            _repository.StartInterval(project.Id);
         }
 
     }

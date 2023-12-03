@@ -6,8 +6,8 @@ namespace Timelogger.UseCases.ProjectState.Const
 {
     public class States
     {
-        public static readonly string STOP = "stop";
-        public static readonly string START = "start";
-        public static readonly string COMPLETED = "completed";
+        public const string STOP = "stop";
+        public const string START = "start";
+        public const string COMPLETED = "completed";
     }
 }

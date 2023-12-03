@@ -9,6 +9,9 @@ namespace Timelogger.Api.DTO.Map
         {
             CreateMap<Project, ProjectDto>();
             CreateMap<ProjectDto, Project>();
+
+            CreateMap<Interval, IntervalDto>();
+            CreateMap<IntervalDto, Interval>();
         }
     }
 }

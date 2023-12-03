@@ -53,6 +53,9 @@
     - The front-end is typed using typescript
 
 -   Out of scope (checklist)
+    - many many unit tests
+    - client tests
+    - e2e scenatios
     - ordering
     - editing
     - error handling
@@ -82,6 +85,9 @@ Log:
 +  5m - ERR: ERROR in useBaseQuery.js 27:2-28
 + 45m - ERR: Uncaught TypeError: dispatcher.useSyncExternalStore is not a function + other issues
 165m
+
++ 60m - Start/stop: init structure
+
        Add feature
 
 - project list

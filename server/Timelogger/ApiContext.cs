@@ -12,5 +12,7 @@ namespace Timelogger
 			: base(options)
 		{
 		}
+
+
     }
 }

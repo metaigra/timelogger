@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Timelogger.Entities;
 using Timelogger.Repositories;
@@ -25,9 +26,20 @@ namespace Timelogger.UseCases.ProjectState
 				return;
 
 			project.State = States.STOP;
+			foreach(var interval in project.Intervals)
+			{
+				if (interval.Completed != null)
+					continue;
+
+				interval.Completed = DateTime.Now;
+			}
+
+			project.Intervals = project
+				.Intervals
+				.Where(i => (i.Completed - i.Started).Value.TotalMinutes >= IntervalConfig.MinimumIntervalInMinutes)
+				.ToList();
+
 			_repository.Update(project);
-			_repository.StopInterval(project.Id);
-			_repository.RemoveShortIntervals(project);
 		}
 
 	}
