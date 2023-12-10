@@ -4,6 +4,8 @@ import { UiModal } from '../../ui/UiModal';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Project } from '../../api/useProjects';
+import { useAddProject } from '../../api/useAddProject';
 
 const ProjectSchema = z.object({
 	name: z.string().min(4, 'At least 4 characters'),
@@ -21,6 +23,7 @@ const ProjectSchema = z.object({
 type ProjectSchemaType = z.infer<typeof ProjectSchema>;
 
 export const AddProject = () => {
+	const addProject = useAddProject();
 	const [addProjectDialog, setAddProjectDialog] = useState(false);
 	const {
 		register,
@@ -28,8 +31,10 @@ export const AddProject = () => {
 		formState: { errors }
 	} = useForm<ProjectSchemaType>({ resolver: zodResolver(ProjectSchema) });
 
-	const onSubmit: SubmitHandler<ProjectSchemaType> = (data) =>
-		console.log(data);
+	const onSubmit: SubmitHandler<ProjectSchemaType> = (data) => {		
+		const project: Project = { ...data, state: 'stop', id: 0 };
+		addProject.mutate(project);
+	};
 
 	return (
 		<>

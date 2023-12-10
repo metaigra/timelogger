@@ -7,7 +7,6 @@ import { Main } from '../components/Main';
 const queryClient = new QueryClient();
 
 export default function App() {
-	// TODO: wrap to custom provider
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Header />

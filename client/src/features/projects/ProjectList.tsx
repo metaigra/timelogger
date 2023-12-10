@@ -54,7 +54,7 @@ export default function ProjectsList() {
 									)}
 								</td>
 								<td className='border px-4 py-2'>
-									{project.deadline}
+									{project.deadline?.toString()}
 								</td>
 							</tr>
 						))}
