@@ -34,10 +34,11 @@ namespace Timelogger.UseCases.ProjectState
 				interval.Completed = DateTime.Now;
 			}
 
-			project.Intervals = project
-				.Intervals
-				.Where(i => (i.Completed - i.Started).Value.TotalMinutes >= IntervalConfig.MinimumIntervalInMinutes)
-				.ToList();
+			// TODO: Disable 30 mins rule
+			//project.Intervals = project
+			//	.Intervals
+			//	.Where(i => (i.Completed - i.Started).Value.TotalMinutes >= IntervalConfig.MinimumIntervalInMinutes)
+			//	.ToList();
 
 			_repository.Update(project);
 		}

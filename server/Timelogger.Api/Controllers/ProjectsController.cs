@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using System.Xml;
 using Timelogger.Api.DTO;
 using Timelogger.Entities;
 using Timelogger.UseCases;
@@ -43,6 +47,7 @@ namespace Timelogger.Api.Controllers
 		{
             var projects = _getProjectsCase.Exec();
             var projectDtos = _mapper.Map<List<ProjectDto>>(projects);
+            Console.Write(JsonConvert.SerializeObject(projectDtos, Newtonsoft.Json.Formatting.Indented));
             return Ok(projectDtos);
 		}
 

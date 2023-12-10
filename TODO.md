@@ -44,6 +44,11 @@
         - TODO: queryProvider (App.tsx)
         - Project Get(int prjectId) - add exception handlers
 
+- DEBT
+    - error field (add project form)
+    - no jest (UI)
+    - UI testing: 30 mins rule was disabled - Controller_StopProject_ShortInterval
+
 - DoD
     - Works, obviously
     - Contains readable, bug free code
@@ -69,10 +74,6 @@
     - Send the solution (git link)
     - inform about (not having a laptop) + guideline for deployment
     - Prepare to a talk
-
-DEBT
-    - error field (add project form)
-    - no jest (UI)
 
 Log:
 + 30m - req.analysis
