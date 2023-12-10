@@ -1,7 +1,12 @@
 import React from 'react';
 import useProjects from './useProjects';
-import { UiButton } from '../../app/ui/UiButton';
-import { COMPLETED, START, STOP, toggleProjectState } from './toggleProjectState';
+import { UiButton } from '../../ui/UiButton';
+import {
+	COMPLETED,
+	START,
+	STOP,
+	toggleProjectState
+} from './toggleProjectState';
 
 export default function ProjectsList() {
 	const { projects, error } = useProjects();
@@ -36,7 +41,10 @@ export default function ProjectsList() {
 											onClick={() =>
 												toggle.mutate({
 													Id: project.id,
-													State: project.state == START ? STOP : START
+													State:
+														project.state == START
+															? STOP
+															: START
 												})
 											}>
 											{project.state == START

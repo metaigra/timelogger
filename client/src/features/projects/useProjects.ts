@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import APIClient from '../../app/api/apiClient';
+import APIClient from '../../api/apiClient';
 
 export interface Project {
 	id: number;
 	name: string;
-	state: "start"|"stop"|"completed";
+	state: 'start' | 'stop' | 'completed';
 	deadline: string;
 }
 

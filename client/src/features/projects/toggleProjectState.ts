@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import APIClient from '../../app/api/apiClient';
+import APIClient from '../../api/apiClient';
 
 interface ProjectUpdateDto {
 	Id: number;
@@ -18,7 +18,7 @@ export const toggleProjectState = () => {
 	return useMutation({
 		mutationFn: projectService.update,
 		onSuccess: () => {
-		  queryClient.invalidateQueries({ queryKey: [projectSlug] })
-		},
-	  })
+			queryClient.invalidateQueries({ queryKey: [projectSlug] });
+		}
+	});
 };

@@ -1,6 +1,6 @@
 import React from 'react';
-import { AddProject } from '../../features/projects/AddProject';
-import ProjectsList from '../../features/projects/ProjectList';
+import { AddProject } from '../features/projects/AddProject';
+import ProjectsList from '../features/projects/ProjectList';
 
 export const Main = () => {
 	return (
