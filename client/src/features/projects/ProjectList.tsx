@@ -7,10 +7,12 @@ import {
 	STOP,
 	toggleProjectState
 } from './toggleProjectState';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProjectsList() {
 	const { projects, error } = useProjects();
 	const toggle = toggleProjectState();
+	const navigate = useNavigate();
 
 	const sortProjectsByDeadline = (projects: Project[]) => {
 		return projects.sort((a, b) => {
@@ -34,7 +36,10 @@ export default function ProjectsList() {
 				<tbody>
 					{projects &&
 						sortProjectsByDeadline(projects).map((project) => (
-							<tr 
+							<tr
+								onClick={() =>
+									navigate(`/project/${project.id}`)
+								}
 								key={project.id}
 								className='hover:bg-gray-100 cursor-pointer'>
 								<td className='border px-4 py-2 w-12'>
