@@ -11,7 +11,7 @@
             +  .NET Core v3.1 and Node  
             + EF in memory
             + build script
-            - run script
+            - TODO: run script
             + cli
                 + fetch faked projects from server
                 + show project
@@ -90,6 +90,8 @@ Log:
 + 60m -           : server intervals
 + 60m -           : update state
 345m
+
++ 10m - Srv: fix - clean up db
 
 - project list
 - env: 

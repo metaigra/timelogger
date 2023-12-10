@@ -1,27 +1,14 @@
 using Microsoft.Extensions.DependencyInjection;
-using Timelogger.Api.Controllers;
 using NUnit.Framework;
 using Microsoft.EntityFrameworkCore;
-using AutoMapper;
 using Timelogger.Api.DTO;
-using Timelogger.UseCases;
-using Timelogger.Repositories;
-using Timelogger.Api.DTO.Map;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Xml.Linq;
 using System;
-using Timelogger.UseCases.Project;
 using Timelogger.UseCases.ProjectState.Const;
 using System.Linq;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using System.Net;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.Net.Http;
-using System.Text;
-using Timelogger.Entities;
 using Timelogger.Api.Tests.Lib;
 
 namespace Timelogger.Api.Tests
@@ -44,7 +31,15 @@ namespace Timelogger.Api.Tests
                 });
             });
             _httpClient = webHost.CreateClient();
+
+            using (var scope = webHost.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<ApiContext>();
+                await dbContext.Database.EnsureDeletedAsync();
+                await dbContext.Database.EnsureCreatedAsync();
+            }
         }
+
 
         [Test]
         public async Task Controller_AddProject_GetProject()
