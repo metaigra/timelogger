@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import APIClient from '../../api/apiClient';
+import APIClient from './apiClient';
 
 export interface Project {
 	id: number;

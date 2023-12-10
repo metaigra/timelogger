@@ -1,5 +1,5 @@
 import React from 'react';
-import useProjects from './useProjects';
+import useProjects from '../../api/useProjects';
 import { UiButton } from '../../ui/UiButton';
 import {
 	COMPLETED,

@@ -70,6 +70,9 @@
     - inform about (not having a laptop) + guideline for deployment
     - Prepare to a talk
 
+DEBT
+    - error field (add project form)
+    - no jest (UI)
 
 Log:
 + 30m - req.analysis
@@ -93,6 +96,7 @@ Log:
 
 + 25m - Srv: fix unit tetss /clean up db
 + 30m - Cli: modal dialog
++ 30m - Cli: validation
 
 - project list
 - env: 
