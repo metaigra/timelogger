@@ -2,11 +2,16 @@ import { useQuery } from 'react-query';
 import APIClient from './apiClient';
 import { API_PROJECT_SLAG } from './const';
 
+interface Intervals {
+	started: Date;
+	completed: Date;
+}
 export interface Project {
 	id: number;
 	name: string;
 	state: 'start' | 'stop' | 'completed';
 	deadline: Date;
+	intervals: Intervals[];
 }
 
 const useProjects = () => {

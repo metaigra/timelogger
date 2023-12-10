@@ -45,10 +45,12 @@
         - Project Get(int prjectId) - add exception handlers
 
 - DEBT
-    - error field (add project form)
-    - no jest (UI)
+    - no jest tests (UI)
+    - no e2e scenarios (playwright)
     - UI testing: 30 mins rule was disabled - Controller_StopProject_ShortInterval
     - UiButton color: not rendered
+    - no error handling for react-query/axios    
+    - 
 
 - DoD
     - Works, obviously
@@ -100,8 +102,9 @@ Log:
 + 30m - Cli: modal dialog
 + 30m - Cli: validation
 + 20m - Cli: UiBUtton - could not change the color as a parameter (tailwind)
-
-Uncaught Error: No QueryClient set, use QueryClientProvider to set one
++ 10m - Uncaught Error: No QueryClient set, use QueryClientProvider to set one
++ 10m - Cli: add router - project list <> project
++ 60m - Cli: project information
 
 - project list
 - env: 

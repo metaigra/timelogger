@@ -32,11 +32,16 @@ export const AddProject = () => {
 		formState: { errors }
 	} = useForm<ProjectSchemaType>({ resolver: zodResolver(ProjectSchema) });
 
-	const onSubmit: SubmitHandler<ProjectSchemaType> = (data) => {		
-		const project: Project = { ...data, state: 'stop', id: 0 };
+	const onSubmit: SubmitHandler<ProjectSchemaType> = (data) => {
+		const project: Project = {
+			...data,
+			state: 'stop',
+			id: 0,
+			intervals: []
+		};
 		addProject.mutate(project);
 		reset();
-		setShowModal(false)
+		setShowModal(false);
 	};
 
 	return (

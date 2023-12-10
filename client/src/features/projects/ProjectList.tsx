@@ -56,15 +56,16 @@ export default function ProjectsList() {
 													? 'blue'
 													: 'green'
 											}
-											onClick={() =>
+											onClick={(event) => {
+												event.stopPropagation();
 												toggle.mutate({
 													Id: project.id,
 													State:
 														project.state == START
 															? STOP
 															: START
-												})
-											}>
+												});
+											}}>
 											{project.state == START
 												? 'STOP'
 												: 'START'}
