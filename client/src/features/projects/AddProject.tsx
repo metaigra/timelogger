@@ -24,29 +24,32 @@ type ProjectSchemaType = z.infer<typeof ProjectSchema>;
 
 export const AddProject = () => {
 	const addProject = useAddProject();
-	const [addProjectDialog, setAddProjectDialog] = useState(false);
+	const [showModal, setShowModal] = useState(false);
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors }
 	} = useForm<ProjectSchemaType>({ resolver: zodResolver(ProjectSchema) });
 
 	const onSubmit: SubmitHandler<ProjectSchemaType> = (data) => {		
 		const project: Project = { ...data, state: 'stop', id: 0 };
 		addProject.mutate(project);
+		reset();
+		setShowModal(false)
 	};
 
 	return (
 		<>
 			<div className='flex items-center my-6'>
 				<div className='w-1/2'>
-					<UiButton onClick={() => setAddProjectDialog(true)}>
+					<UiButton onClick={() => setShowModal(true)}>
 						Add entry
 					</UiButton>
 				</div>
 				<UiModal
-					isVisible={addProjectDialog}
-					onClose={() => setAddProjectDialog(false)}>
+					isVisible={showModal}
+					onClose={() => setShowModal(false)}>
 					{errors.name && (
 						<div className='text-red-500'>
 							{errors.name.message}

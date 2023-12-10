@@ -53,8 +53,8 @@ export default function ProjectsList() {
 										</UiButton>
 									)}
 								</td>
-								<td className='border px-4 py-2'>
-									{project.deadline?.toString()}
+								<td className='border px-4 py-2 text-center'>
+									{project.deadline?.toString().split('T')[0]}
 								</td>
 							</tr>
 						))}

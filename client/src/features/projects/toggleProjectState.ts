@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import APIClient from '../../api/apiClient';
 
 interface ProjectUpdateDto {

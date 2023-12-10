@@ -1,7 +1,8 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
 import { Project } from './useProjects';
 import APIClient from './apiClient';
 import { API_PROJECT_SLAG } from './const';
+import { useQueryClient } from 'react-query';
 
 export const useAddProject = () => {
 	const queryClient = useQueryClient();
@@ -14,7 +15,7 @@ export const useAddProject = () => {
 			return projectService.post(project);
 		},
 		onSuccess: () => {
-			queryClient.invalidateQueries([API_PROJECT_SLAG]);
+			queryClient.invalidateQueries(API_PROJECT_SLAG);
 		}
 	});
 };

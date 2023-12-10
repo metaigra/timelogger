@@ -98,6 +98,8 @@ Log:
 + 30m - Cli: modal dialog
 + 30m - Cli: validation
 
+Uncaught Error: No QueryClient set, use QueryClientProvider to set one
+
 - project list
 - env: 
 
