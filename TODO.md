@@ -92,7 +92,7 @@ Log:
 345m
 
 + 25m - Srv: fix unit tetss /clean up db
-
++ 30m - Cli: modal dialog
 
 - project list
 - env: 
