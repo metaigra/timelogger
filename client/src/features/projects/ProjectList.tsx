@@ -14,11 +14,11 @@ export default function ProjectsList() {
 
 	const sortProjectsByDeadline = (projects: Project[]) => {
 		return projects.sort((a, b) => {
-		  const deadlineA = new Date(a.deadline).getTime();
-		  const deadlineB = new Date(b.deadline).getTime();
-		  return deadlineA - deadlineB;
+			const deadlineA = new Date(a.deadline).getTime();
+			const deadlineB = new Date(b.deadline).getTime();
+			return deadlineA - deadlineB;
 		});
-	  };
+	};
 
 	return (
 		<>
@@ -46,6 +46,11 @@ export default function ProjectsList() {
 								<td className='border px-4 py-2 text-center'>
 									{project.state != COMPLETED && (
 										<UiButton
+											color={
+												project.state == STOP
+													? 'blue'
+													: 'green'
+											}
 											onClick={() =>
 												toggle.mutate({
 													Id: project.id,
