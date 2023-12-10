@@ -1,5 +1,5 @@
 import React from 'react';
-import useProjects from '../../api/useProjects';
+import useProjects, { Project } from '../../api/useProjects';
 import { UiButton } from '../../ui/UiButton';
 import {
 	COMPLETED,
@@ -11,6 +11,14 @@ import {
 export default function ProjectsList() {
 	const { projects, error } = useProjects();
 	const toggle = toggleProjectState();
+
+	const sortProjectsByDeadline = (projects: Project[]) => {
+		return projects.sort((a, b) => {
+		  const deadlineA = new Date(a.deadline).getTime();
+		  const deadlineB = new Date(b.deadline).getTime();
+		  return deadlineA - deadlineB;
+		});
+	  };
 
 	return (
 		<>
@@ -25,7 +33,7 @@ export default function ProjectsList() {
 				</thead>
 				<tbody>
 					{projects &&
-						projects.map((project) => (
+						sortProjectsByDeadline(projects).map((project) => (
 							<tr
 								key={project.id}
 								className='hover:bg-gray-100 cursor-pointer'>
