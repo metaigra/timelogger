@@ -9,11 +9,19 @@ namespace Timelogger.Api.Tests.Lib
 {
     public static class HttpClientExtensions
     {
-        public static async Task<HttpResponseMessage> Send<T>(this HttpClient httpClient, string path, T obj)
+        public static async Task<HttpResponseMessage> Create<T>(this HttpClient httpClient, string path, T obj)
         {
             var jsonContent = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
 
             var postResponse = await httpClient.PostAsync($"api/{path}", jsonContent);
+            return postResponse;
+        }
+
+        public static async Task<HttpResponseMessage> Update<T>(this HttpClient httpClient, string path, T obj)
+        {
+            var jsonContent = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
+
+            var postResponse = await httpClient.PatchAsync($"api/{path}", jsonContent);
             return postResponse;
         }
 
