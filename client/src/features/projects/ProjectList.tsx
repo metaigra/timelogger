@@ -34,7 +34,7 @@ export default function ProjectsList() {
 				<tbody>
 					{projects &&
 						sortProjectsByDeadline(projects).map((project) => (
-							<tr onClick={}
+							<tr 
 								key={project.id}
 								className='hover:bg-gray-100 cursor-pointer'>
 								<td className='border px-4 py-2 w-12'>

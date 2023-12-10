@@ -7,14 +7,22 @@ export const UiButton = ({
 }: {
 	onClick: MouseEventHandler<HTMLButtonElement>;
 	children: string;
-	color?: 'blue' | 'green' | "grey";
+	color?: 'blue' | 'green';
 }) => {
-	const buttonClassName = ` bg-${color}-500 hover:bg-${color}-700 text-white font-bold py-2 px-4 rounded`;
-
-	console.log(buttonClassName);
+	
+	// HACK: colors purged by webpack (???)
 	return (
-		<button onClick={onClick} className={buttonClassName}>
-			{children}
-		</button>
+		<>
+			{color == 'blue' && (
+				<button onClick={onClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+					{children}
+				</button>
+			)}
+			{color == 'green' && (
+				<button onClick={onClick} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+					{children}
+				</button>
+			)}
+		</>
 	);
 };

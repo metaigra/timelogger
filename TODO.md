@@ -48,6 +48,7 @@
     - error field (add project form)
     - no jest (UI)
     - UI testing: 30 mins rule was disabled - Controller_StopProject_ShortInterval
+    - UiButton color: not rendered
 
 - DoD
     - Works, obviously
@@ -98,6 +99,7 @@ Log:
 + 25m - Srv: fix unit tetss /clean up db
 + 30m - Cli: modal dialog
 + 30m - Cli: validation
++ 20m - Cli: UiBUtton - could not change the color as a parameter (tailwind)
 
 Uncaught Error: No QueryClient set, use QueryClientProvider to set one
 
